@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: ${PROFILE}
+    include:
+      - "common-module-${spring.profiles.active}"
+      - "jpa-module-${spring.profiles.active}"
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local

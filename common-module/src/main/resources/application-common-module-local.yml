@@ -1,0 +1,5 @@
+jwt:
+  public-key-path: file:./keys/public.pem
+  access-token-ttl-sec: 3600        # 1??
+  refresh-token-ttl-sec: 1209600    # 14?
+  issuer: auth-server

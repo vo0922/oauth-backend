@@ -1,0 +1,7 @@
+dependencies {
+    implementation project(":common-module")
+    implementation project(":jpa-module")
+
+    // 모듈 전용
+    implementation "org.springframework.boot:spring-boot-starter-security"
+}

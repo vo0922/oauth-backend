@@ -1,0 +1,7 @@
+rootProject.name = "oauth-backend"
+include("common-module", "auth-app", "resource-app", "jpa-module")
+
+findProject(':common-module')?.name = 'common-module'
+findProject(':auth-app')?.name = 'auth-app'
+findProject(':resource-app')?.name = 'resource-app'
+findProject(':jpa-module')?.name = 'jpa-module'

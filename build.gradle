@@ -1,0 +1,52 @@
+plugins {
+    id "java"
+    id "org.springframework.boot" version "3.3.2" apply false
+    id "io.spring.dependency-management" version "1.1.5"
+}
+
+ext {
+    JAVA_VERSION       = 21
+    LOMBOK_VERSION     = "1.18.32"
+    NIMBUS_JWT_VERSION = "9.39.3"
+}
+
+subprojects {
+    apply plugin: "java"
+    apply plugin: "io.spring.dependency-management"
+    group = 'com.oauth2'
+    version = '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:3.3.2"
+        }
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.compilerArgs << "-parameters"
+    }
+
+    java {
+        toolchain { languageVersion = JavaLanguageVersion.of(JAVA_VERSION) }
+    }
+
+    dependencies {
+        // 공통 의존성(버전은 BOM이 관리)
+        implementation "org.springframework.boot:spring-boot-starter-web"
+        implementation "org.springframework.boot:spring-boot-starter-validation"
+
+        // 별도 버전 관리
+        implementation "com.nimbusds:nimbus-jose-jwt:${NIMBUS_JWT_VERSION}"
+
+        compileOnly "org.projectlombok:lombok:${LOMBOK_VERSION}"
+        annotationProcessor "org.projectlombok:lombok:${LOMBOK_VERSION}"
+
+        testImplementation "org.springframework.boot:spring-boot-starter-test"
+    }
+
+    test { useJUnitPlatform() }
+}
