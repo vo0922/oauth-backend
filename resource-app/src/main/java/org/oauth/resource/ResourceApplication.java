@@ -1,4 +1,4 @@
-package org.oauth.resourcemodule;
+package org.oauth.resource;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

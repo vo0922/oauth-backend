@@ -1,10 +1,10 @@
-package org.oauth.authmodule;
+package org.oauth.jpa;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AuthModuleApplicationTests {
+class JpaModuleApplicationTests {
 
     @Test
     void contextLoads() {
