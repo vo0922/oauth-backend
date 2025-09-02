@@ -20,7 +20,7 @@ public class ConstParam {
     // A
     public static final String AUTHORIZATION = "Authorization";
     // B
-    public static final String BEARER = "Bearer ";
+    public static final String BEARER = "Bearer";
     // C
     public static final String CLIENT_ID = "clientId";
     public static final String CLIENT_SECRET = "clientSecret";
@@ -43,6 +43,7 @@ public class ConstParam {
     // K
 
     // L
+    public static final String LOCATION = "Location";
 
     // M
 
@@ -59,9 +60,11 @@ public class ConstParam {
     public static final String REFRESH_TOKEN = "refresh_token";
     public static final String RESPONSE_TYPE = "response_type";
     public static final String RSA = "RSA";
+    public static final String ROLE_USER = "ROLE_USER";
     // S
     public static final String SCOPE = "scope";
-
+    public static final String S256 = "S256";
+    public static final String SHA256 = "SHA-256";
     // T
 
     // U

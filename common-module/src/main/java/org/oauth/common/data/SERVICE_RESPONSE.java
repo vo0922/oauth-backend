@@ -29,12 +29,17 @@ public enum SERVICE_RESPONSE {
     PRIVATE_KEY_NOT_FOUND(1103, "Not Found PrivateKey"),
     PEM_KEY_INVALID(1104, "pem key Invalid"),
     FILE_NOT_FOUND(1105, "File Not Found"),
-    SERVER_ERROR(9000, "Server Error")
-    ;
+    SERVER_ERROR(9000, "Server Error"),
 
     // Common
 
     // Authorization
+    USER_NOT_FOUND(2001, "User Not Found"),
+    CLIENT_ID_INVALID(2002, "Client Id Invalid"),
+    REDIRECT_URI_NOT_MATCH(2003, "Redirect Uri Not Match"),
+    PUBLIC_CLIENT_REQUIRED(2004, "PKCE (S256) required for public client"),
+    GRANT_TYPE_UNSUPPORTED(2005, "unsupported_grant_type"),
+    AUTHORIZE_CODE_INVALID(2006, "authorize code invalid");
 
     // Resource
 

@@ -53,6 +53,10 @@ public class User {
     @Comment("사용자 비밀번호")
     private String password;
 
+    @Column(length = 100, nullable = false)
+    @Comment("사용자 이름")
+    private String userName;
+
     @Column(length = 100)
     @Comment("사용자 이메일")
     private String email;

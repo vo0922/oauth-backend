@@ -58,8 +58,11 @@ public class Client {
     private String redirectUri;
 
     @Column(length = 200)
+    private String scope;
+
+    @Column(length = 200)
     @Comment("권한 e.g. authorization_code")
-    private String granTypes;
+    private String grantTypes;
 
     @Column(nullable = false)
     @ColumnDefault("false")
