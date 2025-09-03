@@ -1,7 +1,11 @@
 package org.oauth.jpa.repository;
 
+import org.oauth.jpa.entity.Client;
 import org.oauth.jpa.entity.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.time.Instant;
+import java.util.Optional;
 
 /**
  * packageName    : org.oauth.jpamodule.repository
@@ -16,4 +20,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  **/
 
 public interface RefreshTokenRepository extends JpaRepository<RefreshToken, Long> {
+
+    Optional<RefreshToken> findByClientAndRevokedAndExpireTimeAfter(Client client, boolean b, Instant now);
 }

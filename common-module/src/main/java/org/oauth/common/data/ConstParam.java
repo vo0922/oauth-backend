@@ -52,6 +52,7 @@ public class ConstParam {
     // O
 
     // P
+    public static final String PLAIN = "plain";
 
     // Q
 
@@ -61,6 +62,7 @@ public class ConstParam {
     public static final String RESPONSE_TYPE = "response_type";
     public static final String RSA = "RSA";
     public static final String ROLE_USER = "ROLE_USER";
+    public static final String READ = "read";
     // S
     public static final String SCOPE = "scope";
     public static final String S256 = "S256";

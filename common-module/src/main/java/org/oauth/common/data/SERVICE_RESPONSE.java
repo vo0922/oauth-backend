@@ -39,7 +39,10 @@ public enum SERVICE_RESPONSE {
     REDIRECT_URI_NOT_MATCH(2003, "Redirect Uri Not Match"),
     PUBLIC_CLIENT_REQUIRED(2004, "PKCE (S256) required for public client"),
     GRANT_TYPE_UNSUPPORTED(2005, "unsupported_grant_type"),
-    AUTHORIZE_CODE_INVALID(2006, "authorize code invalid");
+    AUTHORIZE_CODE_INVALID(2006, "authorize code invalid"),
+    CLIENT_SECRET_INVALID(2007, "client secret invalid"),
+    CODE_VERIFIER_INVALID(2008, "code verifier invalid"),
+    REFRESH_TOKEN_INVALID(2009, "refresh token invalid"),;
 
     // Resource
 
