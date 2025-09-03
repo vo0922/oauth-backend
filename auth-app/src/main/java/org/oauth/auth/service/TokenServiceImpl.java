@@ -17,6 +17,7 @@ import org.oauth.jpa.repository.RefreshTokenRepository;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -52,6 +53,7 @@ public class TokenServiceImpl implements TokenService {
     private final RefreshTokenRepository refreshTokenRepository;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public ResponseDto<ResTokenDto> exchangeAuthorizationCode(String clientId,
                                                               String clientSecret,
                                                               String code,
@@ -126,6 +128,7 @@ public class TokenServiceImpl implements TokenService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public ResponseDto<ResTokenDto> refreshToken(String clientId, String refresh) {
 
         Client client = clientRepository.findByClientId(clientId)

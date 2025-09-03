@@ -31,7 +31,12 @@ public class CachedBodyHttpServletRequest extends HttpServletRequestWrapper {
 
     public CachedBodyHttpServletRequest(HttpServletRequest request) throws IOException {
         super(request);
-        this.cachedBody = request.getInputStream().readAllBytes();
+        if ("application/x-www-form-urlencoded".equalsIgnoreCase(request.getContentType())) {
+            // body 캐싱 안 하고, 파라미터로만 처리
+            this.cachedBody = new byte[0];
+        } else {
+            this.cachedBody = request.getInputStream().readAllBytes();
+        }
     }
 
     @Override

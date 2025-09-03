@@ -18,15 +18,15 @@ import java.security.SecureRandom;
  **/
 
 @Component
-public final class CodeGenerator {
+public class CodeGeneratorUtil {
 
     @Value( "${util.code.generator.alphanum}")
-    private static String ALPHANUM;
+    private String ALPHANUM;
     private static final SecureRandom RND = new SecureRandom();
 
-    private CodeGenerator() {}
+    private CodeGeneratorUtil() {}
 
-    public static String randomCode(int len) {
+    public String randomCode(int len) {
         StringBuilder sb = new StringBuilder(len);
         for (int i = 0; i < len; i++) sb.append(ALPHANUM.charAt(RND.nextInt(ALPHANUM.length())));
         return sb.toString();

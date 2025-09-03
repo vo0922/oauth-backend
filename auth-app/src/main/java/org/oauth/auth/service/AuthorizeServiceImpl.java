@@ -5,7 +5,7 @@ import org.oauth.auth.dto.req.ReqAuthorizeDto;
 import org.oauth.auth.service.inf.AuthorizeService;
 import org.oauth.common.data.SERVICE_RESPONSE;
 import org.oauth.common.exception.ServiceException;
-import org.oauth.common.util.CodeGenerator;
+import org.oauth.common.util.CodeGeneratorUtil;
 import org.oauth.jpa.entity.AuthorizationCode;
 import org.oauth.jpa.entity.Client;
 import org.oauth.jpa.entity.User;
@@ -14,6 +14,7 @@ import org.oauth.jpa.repository.ClientRepository;
 import org.oauth.jpa.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.Optional;
@@ -36,12 +37,16 @@ import static org.oauth.common.data.ConstParam.S256;
 @RequiredArgsConstructor
 public class AuthorizeServiceImpl implements AuthorizeService {
 
+    // util
+    private final CodeGeneratorUtil codeGeneratorUtil;
+
     // repository
     private final ClientRepository clientRepository;
     private final UserRepository userRepository;
     private final AuthorizationCodeRepository authorizationCodeRepository;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public String issueCode(String userName, ReqAuthorizeDto reqAuthorizeDto) {
 
         Client client = clientRepository.findByClientId(reqAuthorizeDto.getClientId())
@@ -61,7 +66,7 @@ public class AuthorizeServiceImpl implements AuthorizeService {
             }
         }
 
-        String codePlain = CodeGenerator.randomCode(48);
+        String codePlain = codeGeneratorUtil.randomCode(48);
         String codeHash = BCrypt.hashpw(codePlain, BCrypt.gensalt());
 
         AuthorizationCode entity = AuthorizationCode.builder()

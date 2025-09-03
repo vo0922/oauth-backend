@@ -1,5 +1,6 @@
 package org.oauth.auth.dto.req;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 /**
@@ -20,11 +21,17 @@ import lombok.*;
 @AllArgsConstructor
 public class ReqTokenDto {
 
+    @NotNull(message = "grant_type is required")
     private String grantType;
+    private String responseType;
+    @NotNull(message = "code is required")
     private String code;
+    @NotNull(message = "redirect_uri is required")
     private String redirectUri;
     private String codeVerifier;
+    @NotNull(message = "client_id is required")
     private String clientId;
+    @NotNull(message = "client_secret is required")
     private String clientSecret;
     private String refreshToken;
 }
